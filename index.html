@@ -3,243 +3,226 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101b35">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10182d">
 <title>Ma Bibliothèque Scolaire</title>
-
 <style>
 *{box-sizing:border-box}
-body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#f4f6fb;
- color:#17233d;
-}
-header{
- background:#101b35;
- color:white;
- padding:22px 18px;
- border-radius:0 0 25px 25px;
-}
-.logo{font-size:13px;color:#ff9b35;font-weight:bold}
-header h1{font-size:23px;margin:12px 0 5px}
-header p{font-size:13px;color:#d5dbea}
-.container{padding:18px;max-width:650px;margin:auto}
-.welcome{
- background:linear-gradient(120deg,#ff7518,#ff9d36);
- color:white;padding:22px;border-radius:18px;
- margin-bottom:22px;
-}
-.welcome h2{margin:0 0 9px;font-size:21px}
-.welcome p{font-size:13px;line-height:1.6}
-.section-title{font-size:19px;margin:23px 0 14px}
-.search{
- width:100%;padding:15px;border:1px solid #e1e5ee;
- border-radius:12px;font-size:14px;background:white;
-}
-.grid{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:12px;
-}
-.subject{
- background:white;border-radius:15px;padding:17px 12px;
- border:1px solid #e9edf4;cursor:pointer;
- text-align:left;color:#17233d;
-}
-.subject:active{transform:scale(.97)}
-.subject .emoji{font-size:27px}
-.subject h3{font-size:14px;margin:12px 0 5px}
-.subject p{font-size:11px;color:#778197;margin:0}
-.subject.active{border:2px solid #ff8425}
-.tabs{
- display:flex;gap:8px;overflow-x:auto;margin:18px 0;
-}
-.tab{
- border:0;border-radius:20px;padding:11px 17px;
- background:white;color:#34415a;white-space:nowrap;
-}
-.tab.active{background:#ff8425;color:white}
-.panel{
- background:white;border-radius:16px;padding:17px;
- border:1px solid #e9edf4;margin-bottom:12px;
-}
-.panel h3{margin:0 0 8px;font-size:16px}
-.panel p{font-size:13px;color:#68748a;line-height:1.6}
-.action{
- background:#101b35;color:white;border:0;
- border-radius:10px;padding:12px;width:100%;
- margin-top:8px;font-size:13px;
-}
-.empty{
- background:white;padding:22px;border-radius:15px;
- text-align:center;color:#68748a;font-size:13px;
- line-height:1.7;
-}
-nav{
- position:sticky;bottom:0;background:white;
- display:flex;justify-content:space-around;
- padding:12px 5px;
- border-top:1px solid #e9edf4;
-}
-nav button{
- border:0;background:white;color:#667188;
- font-size:12px;padding:7px;
-}
-nav button.active{color:#ff7518;font-weight:bold}
-footer{text-align:center;padding:20px;color:#8490a5;font-size:11px}
-.hidden{display:none}
+body{margin:0;background:#f2f4f9;color:#17223b;font-family:Arial,sans-serif}
+header{background:#10182d;color:white;padding:23px 19px 30px;border-radius:0 0 25px 25px}
+.top{display:flex;justify-content:space-between;align-items:center}
+.brand{font-size:12px;font-weight:bold;color:#ff9b43;letter-spacing:1px}
+.avatar{background:#ff8a30;color:white;padding:12px;border-radius:50%;font-weight:bold}
+.greeting{margin-top:24px}
+.greeting h1{font-size:23px;margin:0 0 8px}
+.greeting p{font-size:13px;color:#bdc7dc}
+.container{max-width:650px;margin:auto;padding:17px 16px 90px}
+.profile{background:white;border-radius:17px;padding:17px;display:flex;align-items:center;gap:15px;box-shadow:0 5px 20px #17223b0c;margin-top:-5px}
+.profile-icon{background:#fff0e3;border-radius:15px;padding:15px;font-size:25px}
+.profile small{color:#8490a5}
+.profile h3{margin:5px 0;font-size:16px}
+.progress{margin-left:auto;text-align:center;min-width:65px}
+.circle{width:55px;height:55px;border-radius:50%;border:5px solid #e8edf5;border-top-color:#ff872c;border-right-color:#ff872c;display:grid;place-items:center;font-size:12px;font-weight:bold}
+.heading{font-size:18px;margin:25px 0 13px}
+.search{width:100%;border:0;background:white;border-radius:12px;padding:15px;font-size:14px;outline:none}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.tile{background:white;padding:17px 14px;border-radius:16px;border:1px solid #e9edf4;text-align:left;color:#17223b;cursor:pointer}
+.tile:active{transform:scale(.97)}
+.tile-icon{font-size:27px}
+.tile h3{font-size:14px;margin:12px 0 5px}
+.tile p{font-size:11px;color:#8791a5;margin:0}
+.tile.orange{background:linear-gradient(135deg,#ff7828,#ff9c42);color:white}
+.tile.orange p{color:#fff0df}
+.subject{background:white;border-radius:13px;padding:14px;display:flex;align-items:center;gap:12px;margin-bottom:10px;border:1px solid #e9edf4;cursor:pointer}
+.subject-icon{background:#fff0e3;padding:11px;border-radius:12px;font-size:21px}
+.subject h3{font-size:13px;margin:0 0 5px}
+.subject p{font-size:11px;color:#8993a6;margin:0}
+.subject span{margin-left:auto;color:#ff852c;font-size:20px}
+.panel{background:white;border-radius:15px;padding:17px;margin-bottom:12px}
+.panel h3{font-size:15px;margin:0 0 9px}
+.panel p{font-size:13px;color:#768196;line-height:1.6}
+.primary{background:#ff842e;color:white;border:0;border-radius:10px;padding:13px;width:100%;font-weight:bold}
+.section{display:none}
+.section.active{display:block}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #e9edf4;display:flex;justify-content:space-around;padding:11px 4px calc(11px + env(safe-area-inset-bottom));z-index:5}
+.bottom button{border:0;background:none;color:#8590a4;font-size:11px;padding:5px}
+.bottom button.active{color:#ff812c;font-weight:bold}
+.bottom b{display:block;font-size:20px;margin-bottom:4px}
+.back{border:0;background:#10182d;color:white;padding:11px 15px;border-radius:9px;margin-bottom:15px}
+.tag{color:#ff832d;font-size:11px;font-weight:bold}
+@media(min-width:500px){.grid{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
-
 <body>
 
 <header>
- <div class="logo">📚 BIBLIOTHÈQUE SCOLAIRE</div>
- <h1>Ma Bibliothèque Scolaire</h1>
- <p>Apprendre aujourd'hui, réussir demain 🇧🇫</p>
+ <div class="top">
+  <div class="brand">📚 MA BIBLIOTHÈQUE SCOLAIRE</div>
+  <div class="avatar">ÉL</div>
+ </div>
+ <div class="greeting">
+  <h1>Bonjour, élève ! 👋</h1>
+  <p>Bienvenue dans ton espace d'apprentissage.</p>
+ </div>
 </header>
 
-<div class="container">
+<main class="container">
 
-<section id="accueil">
- <div class="welcome">
-  <h2>Bienvenue sur ta bibliothèque !</h2>
-  <p>Retrouve tes cours, entraîne-toi avec des exercices et prépare tes devoirs scolaires.</p>
-  <strong>Classe : 2nde C</strong>
+<section id="home" class="section active">
+
+ <div class="profile">
+  <div class="profile-icon">🎓</div>
+  <div>
+   <small>Mon niveau scolaire</small>
+   <h3>Classe de 2nde C</h3>
+   <small>Burkina Faso 🇧🇫</small>
+  </div>
+  <div class="progress">
+   <div class="circle">0%</div>
+   <small>Progression</small>
+  </div>
  </div>
 
- <h2 class="section-title">Explorer les matières</h2>
+ <h2 class="heading">Que souhaites-tu faire ?</h2>
+ <div class="grid">
+  <button class="tile orange" onclick="openPage('courses')">
+   <div class="tile-icon">📚</div>
+   <h3>Mes cours</h3>
+   <p>Apprendre et comprendre</p>
+  </button>
+  <button class="tile" onclick="openPage('exercises')">
+   <div class="tile-icon">✍️</div>
+   <h3>Exercices</h3>
+   <p>S'entraîner et progresser</p>
+  </button>
+  <button class="tile" onclick="openPage('homework')">
+   <div class="tile-icon">📝</div>
+   <h3>Devoirs</h3>
+   <p>Préparer ses évaluations</p>
+  </button>
+  <button class="tile" onclick="openPage('quiz')">
+   <div class="tile-icon">🧠</div>
+   <h3>Quiz</h3>
+   <p>Tester ses connaissances</p>
+  </button>
+ </div>
+
+ <h2 class="heading">Toutes les matières</h2>
  <input class="search" id="search" placeholder="🔍 Rechercher une matière..." oninput="filterSubjects()">
+ <div id="subjectList" style="margin-top:14px"></div>
 
- <div class="grid" id="subjects"></div>
-</section>
-
-<section id="bibliotheque" class="hidden">
- <h2 class="section-title">Ma bibliothèque</h2>
- <p>Choisis une matière pour accéder à ses ressources.</p>
- <div class="grid" id="subjects2"></div>
-</section>
-
-<section id="ressources" class="hidden">
- <button onclick="goHome()" class="action">← Retour aux matières</button>
- <h2 class="section-title" id="subjectTitle">Matière</h2>
- <div class="tabs">
-  <button class="tab active" onclick="showTab('cours',this)">📖 Cours</button>
-  <button class="tab" onclick="showTab('exercices',this)">✍️ Exercices</button>
-  <button class="tab" onclick="showTab('devoirs',this)">📝 Devoirs</button>
+ <h2 class="heading">Mon espace de progression</h2>
+ <div class="panel">
+  <div style="display:flex;justify-content:space-between">
+   <b>Ma progression scolaire</b>
+   <span class="tag">Nouveau</span>
+  </div>
+  <p>Ton parcours commencera dès que tu étudieras tes premiers cours et réaliseras tes exercices.</p>
+  <button class="primary" onclick="openPage('courses')">Commencer à apprendre</button>
  </div>
- <div id="resourceContent"></div>
 </section>
 
-</div>
+<section id="courses" class="section">
+ <button class="back" onclick="openPage('home')">← Retour</button>
+ <h2 class="heading">📚 Bibliothèque des cours</h2>
+ <div id="courseList"></div>
+</section>
 
-<nav>
- <button class="active" onclick="navigate('accueil',this)">🏠<br>Accueil</button>
- <button onclick="navigate('bibliotheque',this)">📚<br>Matières</button>
+<section id="exercises" class="section">
+ <button class="back" onclick="openPage('home')">← Retour</button>
+ <h2 class="heading">✍️ Exercices</h2>
+ <div class="panel">
+  <h3>Entraînement scolaire</h3>
+  <p>Des exercices d'application avec des corrections détaillées seront organisés par matière et par chapitre.</p>
+ </div>
+</section>
+
+<section id="homework" class="section">
+ <button class="back" onclick="openPage('home')">← Retour</button>
+ <h2 class="heading">📝 Devoirs et compositions</h2>
+ <div class="panel">
+  <h3>Prépare tes évaluations</h3>
+  <p>Retrouve les sujets de devoirs, les compositions et leurs corrigés.</p>
+ </div>
+</section>
+
+<section id="quiz" class="section">
+ <button class="back" onclick="openPage('home')">← Retour</button>
+ <h2 class="heading">🧠 Espace Quiz</h2>
+ <div class="panel">
+  <h3>Teste tes connaissances</h3>
+  <p>Des questionnaires interactifs seront disponibles par matière.</p>
+ </div>
+</section>
+
+</main>
+
+<nav class="bottom">
+ <button class="active" onclick="openPage('home',this)"><b>⌂</b>Accueil</button>
+ <button onclick="openPage('courses',this)"><b>▤</b>Cours</button>
+ <button onclick="openPage('exercises',this)"><b>✎</b>Exercices</button>
+ <button onclick="openPage('homework',this)"><b>▣</b>Devoirs</button>
 </nav>
-
-<footer>
- Ma Bibliothèque Scolaire – Burkina Faso<br>
- Apprendre et progresser ensemble.
-</footer>
 
 <script>
 const subjects=[
- {name:"Mathématiques",icon:"📐"},
- {name:"Physique-Chimie",icon:"⚗️"},
- {name:"SVT",icon:"🌱"},
- {name:"Français",icon:"📖"},
- {name:"Histoire-Géographie",icon:"🌍"},
- {name:"Anglais",icon:"🔤"},
- {name:"Philosophie",icon:"💡"},
- {name:"ECM",icon:"🤝"}
+["📐","Mathématiques"],
+["⚗️","Physique-Chimie"],
+["🌱","SVT"],
+["📖","Français"],
+["🌍","Histoire-Géographie"],
+["🔤","Anglais"],
+["💡","Philosophie"],
+["🤝","ECM"]
 ];
 
-let selected="";
-let currentTab="cours";
-
-function createCards(target){
- const area=document.getElementById(target);
- area.innerHTML="";
+function renderSubjects(){
+ const list=document.getElementById("subjectList");
+ list.innerHTML="";
  subjects.forEach(s=>{
-  const card=document.createElement("button");
-  card.className="subject";
-  card.innerHTML=`<div class="emoji">${s.icon}</div>
-  <h3>${s.name}</h3><p>Voir les ressources →</p>`;
-  card.onclick=()=>openSubject(s.name);
-  area.appendChild(card);
+  const item=document.createElement("div");
+  item.className="subject";
+  item.innerHTML=`<div class="subject-icon">${s[0]}</div>
+  <div><h3>${s[1]}</h3><p>Cours, exercices et devoirs</p></div><span>›</span>`;
+  item.onclick=()=>showSubject(s[1]);
+  list.appendChild(item);
  });
 }
 
 function filterSubjects(){
  const q=document.getElementById("search").value.toLowerCase();
- const area=document.getElementById("subjects");
- area.innerHTML="";
- subjects.filter(s=>s.name.toLowerCase().includes(q))
- .forEach(s=>{
-  const card=document.createElement("button");
-  card.className="subject";
-  card.innerHTML=`<div class="emoji">${s.icon}</div>
-  <h3>${s.name}</h3><p>Voir les ressources →</p>`;
-  card.onclick=()=>openSubject(s.name);
-  area.appendChild(card);
+ document.querySelectorAll("#subjectList .subject").forEach((item,i)=>{
+  item.style.display=subjects[i][1].toLowerCase().includes(q)?"flex":"none";
  });
 }
 
-function navigate(page,button){
- document.querySelectorAll(".container>section")
- .forEach(s=>s.classList.add("hidden"));
- document.getElementById(page).classList.remove("hidden");
- document.querySelectorAll("nav button")
- .forEach(b=>b.classList.remove("active"));
- button.classList.add("active");
+function openPage(id,button){
+ document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ document.querySelectorAll(".bottom button").forEach(b=>b.classList.remove("active"));
+ if(button)button.classList.add("active");
+ window.scrollTo(0,0);
 }
 
-function openSubject(name){
- selected=name;
- currentTab="cours";
- document.getElementById("accueil").classList.add("hidden");
- document.getElementById("bibliotheque").classList.add("hidden");
- document.getElementById("ressources").classList.remove("hidden");
- document.getElementById("subjectTitle").textContent=name;
- document.querySelectorAll(".tab").forEach((b,i)=>b.classList.toggle("active",i===0));
- renderResources();
-}
-
-function showTab(tab,button){
- currentTab=tab;
- document.querySelectorAll(".tab").forEach(b=>b.classList.remove("active"));
- button.classList.add("active");
- renderResources();
-}
-
-function renderResources(){
- const labels={
- cours:["Cours complets","Retrouve les leçons et les chapitres de cette matière."],
- exercices:["Exercices d'application","Entraîne-toi avec des exercices adaptés à ton niveau."],
- devoirs:["Devoirs et compositions","Prépare tes évaluations et consulte les corrigés."]
- };
- const item=labels[currentTab];
- document.getElementById("resourceContent").innerHTML=`
+function showSubject(name){
+ document.getElementById("home").classList.remove("active");
+ document.getElementById("courses").classList.add("active");
+ const list=document.getElementById("courseList");
+ list.innerHTML=`<button class="back" onclick="openPage('home')">← Matières</button>
+ <h2 class="heading">${name}</h2>
  <div class="panel">
-  <h3>📚 ${item[0]}</h3>
-  <p>${item[1]}</p>
-  <div class="empty">
-   <strong>Contenus en préparation</strong><br>
-   Les ressources de ${selected} seront ajoutées progressivement,
-   conformément au programme scolaire du Burkina Faso.
-  </div>
+ <h3>📖 Cours</h3><p>Les chapitres de ${name} seront ajoutés suivant le programme officiel de 2nde C.</p>
+ </div>
+ <div class="panel">
+ <h3>✍️ Exercices corrigés</h3><p>Des exercices avec explications détaillées seront disponibles ici.</p>
+ </div>
+ <div class="panel">
+ <h3>📝 Devoirs</h3><p>Sujets et corrections de ${name}.</p>
  </div>`;
+ window.scrollTo(0,0);
 }
 
-function goHome(){
- document.getElementById("ressources").classList.add("hidden");
- document.getElementById("accueil").classList.remove("hidden");
-}
-
-createCards("subjects");
-createCards("subjects2");
+renderSubjects();
 </script>
 
 </body>
