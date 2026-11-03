@@ -1,42 +1,246 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101b35">
 <title>Ma Bibliothèque Scolaire</title>
+
 <style>
-body{font-family:Arial,sans-serif;background:#f5f5f5;margin:0}
-header{background:#ff6a00;color:white;padding:20px;text-align:center}
-main{padding:20px}
-.carte{background:white;padding:15px;border-radius:12px;margin-bottom:15px}
-button{background:#ff6a00;color:white;border:none;padding:12px 20px;border-radius:8px}
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#f4f6fb;
+ color:#17233d;
+}
+header{
+ background:#101b35;
+ color:white;
+ padding:22px 18px;
+ border-radius:0 0 25px 25px;
+}
+.logo{font-size:13px;color:#ff9b35;font-weight:bold}
+header h1{font-size:23px;margin:12px 0 5px}
+header p{font-size:13px;color:#d5dbea}
+.container{padding:18px;max-width:650px;margin:auto}
+.welcome{
+ background:linear-gradient(120deg,#ff7518,#ff9d36);
+ color:white;padding:22px;border-radius:18px;
+ margin-bottom:22px;
+}
+.welcome h2{margin:0 0 9px;font-size:21px}
+.welcome p{font-size:13px;line-height:1.6}
+.section-title{font-size:19px;margin:23px 0 14px}
+.search{
+ width:100%;padding:15px;border:1px solid #e1e5ee;
+ border-radius:12px;font-size:14px;background:white;
+}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:12px;
+}
+.subject{
+ background:white;border-radius:15px;padding:17px 12px;
+ border:1px solid #e9edf4;cursor:pointer;
+ text-align:left;color:#17233d;
+}
+.subject:active{transform:scale(.97)}
+.subject .emoji{font-size:27px}
+.subject h3{font-size:14px;margin:12px 0 5px}
+.subject p{font-size:11px;color:#778197;margin:0}
+.subject.active{border:2px solid #ff8425}
+.tabs{
+ display:flex;gap:8px;overflow-x:auto;margin:18px 0;
+}
+.tab{
+ border:0;border-radius:20px;padding:11px 17px;
+ background:white;color:#34415a;white-space:nowrap;
+}
+.tab.active{background:#ff8425;color:white}
+.panel{
+ background:white;border-radius:16px;padding:17px;
+ border:1px solid #e9edf4;margin-bottom:12px;
+}
+.panel h3{margin:0 0 8px;font-size:16px}
+.panel p{font-size:13px;color:#68748a;line-height:1.6}
+.action{
+ background:#101b35;color:white;border:0;
+ border-radius:10px;padding:12px;width:100%;
+ margin-top:8px;font-size:13px;
+}
+.empty{
+ background:white;padding:22px;border-radius:15px;
+ text-align:center;color:#68748a;font-size:13px;
+ line-height:1.7;
+}
+nav{
+ position:sticky;bottom:0;background:white;
+ display:flex;justify-content:space-around;
+ padding:12px 5px;
+ border-top:1px solid #e9edf4;
+}
+nav button{
+ border:0;background:white;color:#667188;
+ font-size:12px;padding:7px;
+}
+nav button.active{color:#ff7518;font-weight:bold}
+footer{text-align:center;padding:20px;color:#8490a5;font-size:11px}
+.hidden{display:none}
 </style>
 </head>
+
 <body>
+
 <header>
-<h1>Ma Bibliothèque Scolaire</h1>
-<p>Burkina Faso</p>
+ <div class="logo">📚 BIBLIOTHÈQUE SCOLAIRE</div>
+ <h1>Ma Bibliothèque Scolaire</h1>
+ <p>Apprendre aujourd'hui, réussir demain 🇧🇫</p>
 </header>
 
-<main>
-<div class="carte">
-<h2>Bienvenue</h2>
-<p>Cours, exercices et devoirs de la 2nde C.</p>
+<div class="container">
+
+<section id="accueil">
+ <div class="welcome">
+  <h2>Bienvenue sur ta bibliothèque !</h2>
+  <p>Retrouve tes cours, entraîne-toi avec des exercices et prépare tes devoirs scolaires.</p>
+  <strong>Classe : 2nde C</strong>
+ </div>
+
+ <h2 class="section-title">Explorer les matières</h2>
+ <input class="search" id="search" placeholder="🔍 Rechercher une matière..." oninput="filterSubjects()">
+
+ <div class="grid" id="subjects"></div>
+</section>
+
+<section id="bibliotheque" class="hidden">
+ <h2 class="section-title">Ma bibliothèque</h2>
+ <p>Choisis une matière pour accéder à ses ressources.</p>
+ <div class="grid" id="subjects2"></div>
+</section>
+
+<section id="ressources" class="hidden">
+ <button onclick="goHome()" class="action">← Retour aux matières</button>
+ <h2 class="section-title" id="subjectTitle">Matière</h2>
+ <div class="tabs">
+  <button class="tab active" onclick="showTab('cours',this)">📖 Cours</button>
+  <button class="tab" onclick="showTab('exercices',this)">✍️ Exercices</button>
+  <button class="tab" onclick="showTab('devoirs',this)">📝 Devoirs</button>
+ </div>
+ <div id="resourceContent"></div>
+</section>
+
 </div>
 
-<div class="carte">
-<h2>Matières</h2>
-<ul>
-<li>Mathématiques</li>
-<li>Physique-Chimie</li>
-<li>SVT</li>
-<li>Français</li>
-<li>Histoire-Géographie</li>
-<li>Anglais</li>
-<li>Philosophie</li>
-</ul>
-<button>Commencer</button>
-</div>
-</main>
+<nav>
+ <button class="active" onclick="navigate('accueil',this)">🏠<br>Accueil</button>
+ <button onclick="navigate('bibliotheque',this)">📚<br>Matières</button>
+</nav>
+
+<footer>
+ Ma Bibliothèque Scolaire – Burkina Faso<br>
+ Apprendre et progresser ensemble.
+</footer>
+
+<script>
+const subjects=[
+ {name:"Mathématiques",icon:"📐"},
+ {name:"Physique-Chimie",icon:"⚗️"},
+ {name:"SVT",icon:"🌱"},
+ {name:"Français",icon:"📖"},
+ {name:"Histoire-Géographie",icon:"🌍"},
+ {name:"Anglais",icon:"🔤"},
+ {name:"Philosophie",icon:"💡"},
+ {name:"ECM",icon:"🤝"}
+];
+
+let selected="";
+let currentTab="cours";
+
+function createCards(target){
+ const area=document.getElementById(target);
+ area.innerHTML="";
+ subjects.forEach(s=>{
+  const card=document.createElement("button");
+  card.className="subject";
+  card.innerHTML=`<div class="emoji">${s.icon}</div>
+  <h3>${s.name}</h3><p>Voir les ressources →</p>`;
+  card.onclick=()=>openSubject(s.name);
+  area.appendChild(card);
+ });
+}
+
+function filterSubjects(){
+ const q=document.getElementById("search").value.toLowerCase();
+ const area=document.getElementById("subjects");
+ area.innerHTML="";
+ subjects.filter(s=>s.name.toLowerCase().includes(q))
+ .forEach(s=>{
+  const card=document.createElement("button");
+  card.className="subject";
+  card.innerHTML=`<div class="emoji">${s.icon}</div>
+  <h3>${s.name}</h3><p>Voir les ressources →</p>`;
+  card.onclick=()=>openSubject(s.name);
+  area.appendChild(card);
+ });
+}
+
+function navigate(page,button){
+ document.querySelectorAll(".container>section")
+ .forEach(s=>s.classList.add("hidden"));
+ document.getElementById(page).classList.remove("hidden");
+ document.querySelectorAll("nav button")
+ .forEach(b=>b.classList.remove("active"));
+ button.classList.add("active");
+}
+
+function openSubject(name){
+ selected=name;
+ currentTab="cours";
+ document.getElementById("accueil").classList.add("hidden");
+ document.getElementById("bibliotheque").classList.add("hidden");
+ document.getElementById("ressources").classList.remove("hidden");
+ document.getElementById("subjectTitle").textContent=name;
+ document.querySelectorAll(".tab").forEach((b,i)=>b.classList.toggle("active",i===0));
+ renderResources();
+}
+
+function showTab(tab,button){
+ currentTab=tab;
+ document.querySelectorAll(".tab").forEach(b=>b.classList.remove("active"));
+ button.classList.add("active");
+ renderResources();
+}
+
+function renderResources(){
+ const labels={
+ cours:["Cours complets","Retrouve les leçons et les chapitres de cette matière."],
+ exercices:["Exercices d'application","Entraîne-toi avec des exercices adaptés à ton niveau."],
+ devoirs:["Devoirs et compositions","Prépare tes évaluations et consulte les corrigés."]
+ };
+ const item=labels[currentTab];
+ document.getElementById("resourceContent").innerHTML=`
+ <div class="panel">
+  <h3>📚 ${item[0]}</h3>
+  <p>${item[1]}</p>
+  <div class="empty">
+   <strong>Contenus en préparation</strong><br>
+   Les ressources de ${selected} seront ajoutées progressivement,
+   conformément au programme scolaire du Burkina Faso.
+  </div>
+ </div>`;
+}
+
+function goHome(){
+ document.getElementById("ressources").classList.add("hidden");
+ document.getElementById("accueil").classList.remove("hidden");
+}
+
+createCards("subjects");
+createCards("subjects2");
+</script>
+
 </body>
 </html>
