@@ -204,23 +204,164 @@ function openPage(id,button){
  window.scrollTo(0,0);
 }
 
+
+const frenchModules = [
+{
+title:"Le roman et la nouvelle",
+course:"Le roman est un récit en prose généralement long qui présente des personnages, des événements et une intrigue. La nouvelle est un récit en prose plus court, centré sur une action principale et comportant souvent peu de personnages. Les éléments essentiels du récit sont le narrateur, les personnages, le cadre spatio-temporel, l'intrigue et le schéma narratif. Le schéma narratif comprend cinq étapes : situation initiale, élément perturbateur, péripéties, dénouement et situation finale.",
+example:"Exemple : Un personnage quitte son village pour chercher du travail en ville. Son départ constitue une situation initiale qui peut être bouleversée par un événement inattendu.",
+exercise:"Distingue le roman de la nouvelle. Cite les cinq étapes du schéma narratif.",
+correction:"Le roman est généralement plus long et développe davantage les personnages et les intrigues. La nouvelle est plus courte et se concentre sur une action principale. Les cinq étapes sont : situation initiale, élément perturbateur, péripéties, dénouement et situation finale.",
+homework:"Rédige un récit de 15 à 20 lignes racontant une aventure vécue par un élève. Fais apparaître les cinq étapes du schéma narratif.",
+homeworkCorrection:"Un bon récit doit présenter un cadre, des personnages, un événement perturbateur, des actions, une résolution et une situation finale. La correction doit vérifier la cohérence, les temps verbaux, les connecteurs et l'orthographe."
+},
+{
+title:"La poésie",
+course:"La poésie est un genre littéraire qui utilise le langage de manière artistique pour exprimer des sentiments, des émotions, des idées ou des images. Elle peut être écrite en vers ou en prose. Le vers est une ligne poétique. Une strophe est un ensemble de vers. La rime est le retour d'un même son à la fin de plusieurs vers. Les figures de style importantes sont la comparaison, la métaphore, la personnification, l'hyperbole et l'anaphore.",
+example:"Comparaison : Ses yeux brillent comme des étoiles. Métaphore : Ses yeux sont des étoiles. Personnification : Le vent chante dans les arbres.",
+exercise:"Identifie la figure de style dans chacune de ces phrases : 1. Il est fort comme un lion. 2. La ville s'endort. 3. Je meurs de faim.",
+correction:"1. Comparaison, grâce à l'outil comme. 2. Personnification, car la ville reçoit une action humaine. 3. Hyperbole, car l'expression exagère la faim.",
+homework:"Explique la différence entre une métaphore et une comparaison. Donne deux exemples de chaque figure de style.",
+homeworkCorrection:"La comparaison rapproche deux éléments à l'aide d'un outil de comparaison comme, tel ou semblable à. La métaphore établit un rapprochement sans outil de comparaison. Les exemples doivent être correctement identifiés."
+},
+{
+title:"Le théâtre",
+course:"Le théâtre est un genre littéraire destiné à être représenté devant un public. Le texte théâtral est organisé en actes et en scènes. Les personnages prennent la parole à travers des répliques. Un dialogue est un échange entre plusieurs personnages. Un monologue est une longue prise de parole d'un personnage seul en scène. Une didascalie est une indication de l'auteur concernant les gestes, les déplacements, le ton ou le décor. Les principaux genres sont la comédie et la tragédie.",
+example:"Exemple de didascalie : (Il entre lentement et regarde la salle.) Cette indication précise le comportement du personnage.",
+exercise:"Définis un acte, une scène, une réplique, un monologue et une didascalie.",
+correction:"Un acte est une grande division de la pièce. Une scène est une subdivision d'un acte. Une réplique est une parole prononcée par un personnage. Un monologue est une longue parole prononcée seul. Une didascalie est une indication scénique.",
+homework:"Imagine un dialogue théâtral entre deux élèves qui discutent de l'importance des études. Ajoute des didascalies.",
+homeworkCorrection:"Le dialogue doit comporter au moins deux personnages, des répliques alternées, un sujet clair et des didascalies pertinentes. La langue doit être correcte."
+},
+{
+title:"Le résumé de texte",
+course:"Le résumé consiste à reformuler l'essentiel d'un texte en conservant ses idées principales, son enchaînement logique et son point de vue. Il faut lire attentivement le texte, identifier le thème, repérer les idées essentielles, éliminer les exemples secondaires et reformuler avec ses propres mots. Un résumé doit être fidèle, clair, cohérent et concis. Il ne faut pas ajouter son opinion personnelle.",
+example:"Texte : Les élèves doivent lire régulièrement pour enrichir leur vocabulaire et améliorer leur expression. Résumé possible : La lecture régulière améliore le vocabulaire et l'expression des élèves.",
+exercise:"Pourquoi faut-il supprimer les exemples secondaires dans un résumé ?",
+correction:"Parce que le résumé doit conserver les idées essentielles du texte en réduisant sa longueur, sans perdre son sens.",
+homework:"Résume en quelques phrases ce passage : La lecture permet aux jeunes de découvrir de nouvelles idées, d'améliorer leur vocabulaire et de développer leur imagination. Elle contribue aussi à leur réussite scolaire.",
+homeworkCorrection:"La lecture aide les jeunes à enrichir leur vocabulaire, à développer leur imagination et à améliorer leurs résultats scolaires. Cette proposition conserve les idées essentielles."
+},
+{
+title:"La dissertation",
+course:"La dissertation est un exercice de réflexion organisée qui consiste à répondre à un sujet en développant des arguments et des exemples. Elle comprend une introduction, un développement et une conclusion. L'introduction présente le sujet, explique les termes importants, pose la problématique et annonce le plan. Le développement organise les arguments en parties cohérentes. La conclusion fait le bilan et répond clairement à la problématique.",
+example:"Sujet : La lecture est-elle indispensable à la réussite scolaire ? On peut étudier ses avantages, puis les limites d'une lecture sans méthode ni compréhension.",
+exercise:"Quelles sont les trois grandes parties d'une dissertation ?",
+correction:"L'introduction, le développement et la conclusion.",
+homework:"Sujet : L'école prépare-t-elle seulement les élèves à trouver un emploi ? Propose une introduction et un plan détaillé.",
+homeworkCorrection:"Introduction attendue : présenter le rôle de l'école, poser la question de sa mission et annoncer un plan. Plan possible : I. L'école prépare à la vie professionnelle. II. Elle forme aussi des citoyens et développe la culture et l'esprit critique."
+},
+{
+title:"Le commentaire composé",
+course:"Le commentaire composé consiste à analyser un texte littéraire afin de montrer comment il produit du sens et des effets. Il faut d'abord lire le texte plusieurs fois, identifier son thème et son genre, repérer les procédés d'écriture et organiser les observations en axes d'analyse. Chaque remarque doit être justifiée par un élément précis du texte. L'analyse ne doit pas être une simple paraphrase.",
+example:"Dans l'expression la nuit dévore la ville, le verbe dévore donne à la nuit une action vivante. Il s'agit d'une personnification qui peut suggérer une atmosphère inquiétante.",
+exercise:"Dans la phrase le soleil sourit aux enfants, identifie une figure de style et explique son effet.",
+correction:"Il s'agit d'une personnification : le soleil reçoit une action humaine. Cette image crée une impression de douceur et de joie.",
+homework:"Explique comment tu organiserais le commentaire composé d'un poème qui évoque la souffrance et l'espoir.",
+homeworkCorrection:"On peut proposer deux axes : I. L'expression de la souffrance. II. La présence de l'espoir. Chaque axe doit être appuyé par des citations et des procédés d'écriture analysés."
+},
+{
+title:"Les écrits fonctionnels",
+course:"Les écrits fonctionnels sont des textes rédigés pour communiquer une information ou accomplir une tâche précise dans la vie quotidienne. On peut citer la lettre, la demande, le compte rendu, le rapport, le procès-verbal et le curriculum vitæ. Chaque type d'écrit possède une présentation, un destinataire et un objectif particuliers. Le style doit être clair, précis et adapté à la situation.",
+example:"Une lettre de demande comporte généralement le lieu et la date, le destinataire, l'objet, la formule d'appel, le corps de la lettre, la formule de politesse et la signature.",
+exercise:"Cite quatre types d'écrits fonctionnels et explique leur utilité.",
+correction:"La lettre permet de communiquer avec un destinataire. Le compte rendu rapporte des faits ou une activité. Le rapport présente une situation et l'analyse. Le procès-verbal consigne officiellement le déroulement d'une réunion.",
+homework:"Rédige une demande adressée au directeur de ton établissement pour obtenir une autorisation d'absence.",
+homeworkCorrection:"La demande doit indiquer le destinataire, l'objet, le motif précis, la durée de l'absence, une formule de politesse et la signature."
+},
+{
+title:"La lecture expliquée",
+course:"La lecture expliquée est un exercice d'étude orale et méthodique d'un texte. Elle consiste à lire correctement, comprendre le texte, expliquer son vocabulaire, dégager son thème, étudier son organisation et interpréter les procédés d'écriture. Il faut articuler, respecter la ponctuation et adopter une intonation adaptée. L'explication doit s'appuyer sur le texte.",
+example:"Pour expliquer un texte, on peut présenter son auteur et sa nature, situer l'extrait, annoncer le thème, analyser les idées et terminer par un bilan.",
+exercise:"Quelles sont les principales étapes d'une lecture expliquée ?",
+correction:"Présentation du texte, lecture expressive, explication du vocabulaire, identification du thème, analyse des idées et procédés, puis conclusion.",
+homework:"Choisis un court extrait littéraire et prépare une présentation orale de trois minutes.",
+homeworkCorrection:"La présentation doit mentionner la nature du texte, son thème, ses idées principales et au moins deux procédés d'écriture expliqués."
+},
+{
+title:"Culture littéraire française et africaine",
+course:"La culture littéraire permet de découvrir les auteurs, les œuvres, les mouvements et les contextes historiques. La littérature française et les littératures africaines francophones présentent des œuvres qui abordent la société, l'identité, la liberté, la colonisation, les traditions et les changements sociaux. L'étude d'une œuvre demande de connaître son auteur, son époque, son genre, ses thèmes et son intérêt.",
+example:"La littérature africaine francophone permet notamment d'étudier les traditions, les transformations sociales, l'histoire et les questions d'identité.",
+exercise:"Pourquoi est-il important de connaître le contexte historique d'une œuvre littéraire ?",
+correction:"Le contexte historique aide à comprendre les événements, les idées, les valeurs et les réalités sociales évoqués par l'auteur.",
+homework:"Présente une œuvre littéraire africaine que tu connais : son auteur, son genre, ses thèmes et son intérêt.",
+homeworkCorrection:"La présentation doit identifier correctement l'œuvre et son auteur, préciser le genre, présenter les principaux thèmes et expliquer l'intérêt de l'œuvre."
+}
+];
+
+let frenchTab="cours";
+
 function showSubject(name){
- document.getElementById("home").classList.remove("active");
+ document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
  document.getElementById("courses").classList.add("active");
+
  const list=document.getElementById("courseList");
- list.innerHTML=`<button class="back" onclick="openPage('home')">← Matières</button>
- <h2 class="heading">${name}</h2>
- <div class="panel">
- <h3>📖 Cours</h3><p>Les chapitres de ${name} seront ajoutés suivant le programme officiel de 2nde C.</p>
- </div>
- <div class="panel">
- <h3>✍️ Exercices corrigés</h3><p>Des exercices avec explications détaillées seront disponibles ici.</p>
- </div>
- <div class="panel">
- <h3>📝 Devoirs</h3><p>Sujets et corrections de ${name}.</p>
- </div>`;
+
+ if(name==="Français"){
+  list.innerHTML=`
+   <button class="back" onclick="openPage('home')">← Retour</button>
+   <h2 class="heading">📖 Français – 2nde C</h2>
+   <p style="color:#778197;font-size:13px">Cours, exercices, devoirs et corrigés</p>
+   <div class="tabs" style="display:flex;gap:6px;overflow-x:auto;margin:18px 0">
+    <button class="tab active" onclick="selectFrenchTab('cours',this)">📚 Cours</button>
+    <button class="tab" onclick="selectFrenchTab('exercices',this)">✍️ Exercices</button>
+    <button class="tab" onclick="selectFrenchTab('devoirs',this)">📝 Devoirs</button>
+    <button class="tab" onclick="selectFrenchTab('corriges',this)">✅ Corrigés</button>
+   </div>
+   <div id="frenchContent"></div>`;
+  renderFrench();
+ }else{
+  list.innerHTML=`
+   <button class="back" onclick="openPage('home')">← Retour</button>
+   <h2 class="heading">${name}</h2>
+   <div class="panel"><h3>📚 Ressources en préparation</h3><p>Les cours, exercices et devoirs seront ajoutés progressivement.</p></div>`;
+ }
  window.scrollTo(0,0);
 }
+
+function selectFrenchTab(tab,button){
+ frenchTab=tab;
+ document.querySelectorAll("#courseList .tab").forEach(b=>b.classList.remove("active"));
+ button.classList.add("active");
+ renderFrench();
+}
+
+function renderFrench(){
+ const content=document.getElementById("frenchContent");
+ if(!content)return;
+
+ content.innerHTML="";
+ frenchModules.forEach((m,i)=>{
+  let heading="",body="";
+
+  if(frenchTab==="cours"){
+   heading="📖 Leçon";
+   body=`<p>${m.course}</p><p><strong>Exemple :</strong> ${m.example}</p>`;
+  }
+  if(frenchTab==="exercices"){
+   heading="✍️ Exercice d'application";
+   body=`<p>${m.exercise}</p>`;
+  }
+  if(frenchTab==="devoirs"){
+   heading="📝 Travail à faire";
+   body=`<p>${m.homework}</p>`;
+  }
+  if(frenchTab==="corriges"){
+   heading="✅ Corrigé de l'exercice";
+   body=`<p>${m.correction}</p><hr><strong>Éléments de correction du devoir</strong><p>${m.homeworkCorrection}</p>`;
+  }
+
+  const card=document.createElement("article");
+  card.className="panel";
+  card.innerHTML=`
+   <span style="color:#ff842e;font-size:11px;font-weight:bold">CHAPITRE ${i+1}</span>
+   <h3 style="margin-top:8px">${m.title}</h3>
+   <p><strong>${heading}</strong></p>
+   ${body}`;
+  content.appendChild(card);
+ });
+ }
+ 
 
 renderSubjects();
 </script>
