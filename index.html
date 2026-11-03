@@ -82,13 +82,43 @@ header{background:#10182d;color:white;padding:23px 19px 30px;border-radius:0 0 2
    <small>Progression</small>
   </div>
  </div>
-<div class="panel">
-  <h3>👤 Mon compte élève</h3>
-  <input id="studentName" placeholder="Nom complet">
-  <input id="studentEmail" type="email" placeholder="Adresse e-mail">
-  <input id="studentPassword" type="password" placeholder="Mot de passe">
-  <button class="primary">Créer mon compte</button>
+
+<div class="auth-box" style="background:white;border-radius:18px;padding:20px;margin:18px 0;border:1px solid #e8edf5;box-shadow:0 6px 22px #10182d10">
+
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
+    <div style="background:#fff0e3;padding:13px;border-radius:14px;font-size:25px">🎓</div>
+    <div>
+      <h3 style="margin:0;color:#10182d;font-size:17px">Mon espace élève</h3>
+      <p style="margin:5px 0 0;color:#8993a6;font-size:12px">Retrouve ton parcours scolaire</p>
+    </div>
+  </div>
+
+  <div style="background:#f5f7fb;border-radius:12px;padding:13px;margin-bottom:16px">
+    <p style="margin:0;color:#10182d;font-size:13px;font-weight:bold">Bienvenue dans ta bibliothèque !</p>
+    <p style="margin:6px 0 0;color:#778197;font-size:12px">Crée ton compte pour retrouver ton profil, tes notes et ta progression.</p>
+  </div>
+
+  <label style="font-size:12px;font-weight:bold">Nom complet</label>
+  <input id="studentName" type="text" placeholder="Ex. : Anna Gracia" style="width:100%;padding:14px;margin:7px 0 14px;border:1px solid #e1e6ef;border-radius:10px">
+
+  <label style="font-size:12px;font-weight:bold">Adresse e-mail</label>
+  <input id="studentEmail" type="email" placeholder="exemple@email.com" style="width:100%;padding:14px;margin:7px 0 14px;border:1px solid #e1e6ef;border-radius:10px">
+
+  <label style="font-size:12px;font-weight:bold">Mot de passe</label>
+  <input id="studentPassword" type="password" placeholder="Au moins 6 caractères" style="width:100%;padding:14px;margin:7px 0 15px;border:1px solid #e1e6ef;border-radius:10px">
+
+  <button class="primary" type="button" onclick="signUpStudent()">Créer mon compte</button>
+
+  <button type="button" onclick="signInStudent()" style="width:100%;padding:13px;margin-top:10px;border:0;border-radius:10px;background:#10182d;color:white;font-weight:bold">
+    Se connecter
+  </button>
+
+  <p style="text-align:center;color:#8993a6;font-size:11px;margin:15px 0 0">
+    🔒 Ton espace personnel et tes données scolaires
+  </p>
+  <p id="authMessage" style="font-size:12px;color:#66728a"></p>
 </div>
+ 
  <h2 class="heading">Que souhaites-tu faire ?</h2>
  <div class="grid">
   <button class="tile orange" onclick="openPage('courses')">
